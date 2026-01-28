@@ -5,7 +5,9 @@ for _, obj in ipairs(core:GetDescendants()) do
         local img = obj.Image
         if typeof(img) == "string" and img:find("new_logo%.png") then
             for _, child in ipairs(obj:GetChildren()) do
-                child:Destroy()
+                if child:IsA("UIStroke") then
+                    child:Destroy()
+                end
             end
         end
     end
